@@ -6,6 +6,7 @@ import time
 from requests.auth import HTTPBasicAuth
 requests.packages.urllib3.disable_warnings()
 
+print("opening file")
 fDataName: str = time.strftime("%d%m%Y-%H%M%S") + "-stressRun.txt"
 fData = open(fDataName, 'w')
 
@@ -23,11 +24,13 @@ Conn.auth = HTTPBasicAuth(Usr, Pwd)
 Conn.headers = hdr1
 Conn.verify = False
 
+print("authenticating stage 1")
 r = Conn.get(lUri)
 sPwd = r.text.replace('"', '')
 Conn.auth = HTTPBasicAuth(Usr, sPwd)
 
 # create a list of SDS with sds name and sds id's
+print("authenticating stage 2")
 rSDS = Conn.get(sUri)
 count = 0
 for lSds in rSDS.json():
@@ -55,7 +58,7 @@ for lDev in rDev.json():
         sOutLine = sOutLine + ","
         lOutLine = lOutLine + "\n"
     devId = str(lDev['id'])
-
+    print("found device")
     lOutLine = lOutLine + devId
     lOutLine = lOutLine + ","
     lOutLine = lOutLine + str(lDev['name'])
@@ -121,6 +124,7 @@ while 1 == 1:
                 pOutLine = pOutLine + "0,"
 
     fData.write(pOutLine + '\n')
+    print("just polled")
     time.sleep(5)
 
 fData.close()
