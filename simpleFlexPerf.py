@@ -1,5 +1,3 @@
-
-
 import requests
 import time
 
@@ -11,8 +9,6 @@ fDataName: str = time.strftime("%d%m%Y-%H%M%S") + "-stressRun.txt"
 fData = open(fDataName, 'w')
 
 Usr = "admin"
-Pwd = "Flex1234"
-Srv: str = "192.168.116.3"
 bUri = "https://" + Srv
 lUri = bUri + "/api/login"
 sUri = bUri + "/api/types/Sds/instances"
