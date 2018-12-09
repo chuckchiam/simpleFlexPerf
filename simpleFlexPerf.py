@@ -9,6 +9,8 @@ fDataName: str = time.strftime("%d%m%Y-%H%M%S") + "-stressRun.txt"
 fData = open(fDataName, 'w')
 
 Usr = "admin"
+Pwd = "Fracas123"
+Srv: str = "192.168.1.2"
 bUri = "https://" + Srv
 lUri = bUri + "/api/login"
 sUri = bUri + "/api/types/Sds/instances"
