@@ -1,0 +1,24 @@
+SDSname,SDSid
+SDS3,2cb9c91800000003
+SDSname,SDSid
+SDS4,2cb9c91900000004
+SDSname,SDSid
+SDS1,2cba173600000000
+SDSname,SDSid
+SDS2,2cb9c91700000002
+SDSname,SDSid
+SDS5,2cb9c91600000001
+
+devId,devName,devSdsId,devCurrentPath
+e97f1bc500020000,/dev/sdb,2cb9c91700000002,/dev/sdb
+777e69e400000000,/dev/sdb,2cba173600000000,/dev/sdb
+e9791bc700040000,/dev/sdb,2cb9c91900000004,/dev/sdb
+e97e90f300010000,/dev/sdb,2cb9c91600000001,/dev/sdb
+e9781bc600030000,/dev/sdb,2cb9c91800000003,/dev/sdb
+
+e97f1bc500020000 totalWriteBwcnumSeconds,e97f1bc500020000 totalWriteBwctotalWeightInKb,e97f1bc500020000 totalWriteBwcnumOccured,e97f1bc500020000 avgWriteLatencyInMicrosec,e97f1bc500020000 totalReadBwcnumSeconds,e97f1bc500020000 totalReadBwctotalWeightInKb,e97f1bc500020000 totalReadBwcnumOccured,e97f1bc500020000 avgReadLatencyInMicrosec,777e69e400000000 totalWriteBwcnumSeconds,777e69e400000000 totalWriteBwctotalWeightInKb,777e69e400000000 totalWriteBwcnumOccured,777e69e400000000 avgWriteLatencyInMicrosec,777e69e400000000 totalReadBwcnumSeconds,777e69e400000000 totalReadBwctotalWeightInKb,777e69e400000000 totalReadBwcnumOccured,777e69e400000000 avgReadLatencyInMicrosec,e9791bc700040000 totalWriteBwcnumSeconds,e9791bc700040000 totalWriteBwctotalWeightInKb,e9791bc700040000 totalWriteBwcnumOccured,e9791bc700040000 avgWriteLatencyInMicrosec,e9791bc700040000 totalReadBwcnumSeconds,e9791bc700040000 totalReadBwctotalWeightInKb,e9791bc700040000 totalReadBwcnumOccured,e9791bc700040000 avgReadLatencyInMicrosec,e97e90f300010000 totalWriteBwcnumSeconds,e97e90f300010000 totalWriteBwctotalWeightInKb,e97e90f300010000 totalWriteBwcnumOccured,e97e90f300010000 avgWriteLatencyInMicrosec,e97e90f300010000 totalReadBwcnumSeconds,e97e90f300010000 totalReadBwctotalWeightInKb,e97e90f300010000 totalReadBwcnumOccured,e97e90f300010000 avgReadLatencyInMicrosec,e9781bc600030000 totalWriteBwcnumSeconds,e9781bc600030000 totalWriteBwctotalWeightInKb,e9781bc600030000 totalWriteBwcnumOccured,e9781bc600030000 avgWriteLatencyInMicrosec,e9781bc600030000 totalReadBwcnumSeconds,e9781bc600030000 totalReadBwctotalWeightInKb,e9781bc600030000 totalReadBwcnumOccured,e9781bc600030000 avgReadLatencyInMicrosec
+05-13-17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+05-13-17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+05-13-17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+05-13-17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+05-13-17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
