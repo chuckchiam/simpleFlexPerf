@@ -3,14 +3,11 @@ import time
 import os
 
 from requests.auth import HTTPBasicAuth
-
 requests.packages.urllib3.disable_warnings()
 
 print("opening file")
-fdeviceDataName: str = time.strftime("%d%m%Y-%H%M%S") + "-stressRunDevice.txt"
-fdeviceDataVol: str = time.strftime("%d%m%Y-%H%M%S") + "-stressRunVol.txt"
-fData = open(fdeviceDataName, 'w')
-fData = open(fdeviceDataVol, 'w')
+fDataName: str = time.strftime("%d%m%Y-%H%M%S") + "-stressRun.txt"
+fData = open(fDataName, 'w')
 
 Usr = "admin"
 Pwd = "Scaleio123"
@@ -19,7 +16,6 @@ baseUri = "https://{}".format(Srv)
 loginUri = "{}/api/login".format(baseUri)
 sdsUri = "{}/api/types/Sds/instances".format(baseUri)
 deviceUri = "{}/api/types/Device/instances".format(baseUri)
-VolumeUri =
 hdr1 = {'content-type': 'application/json'}
 
 Conn = requests.Session()
@@ -53,20 +49,22 @@ fData.write("devId,devName,devSdsId,devCurrentPath" + '\n')
 rDev = Conn.get(deviceUri)
 couterlabel = ""
 for lDev in rDev.json():
-    if count > 0:
+    if count == 0:
+        couterlabel = "Timestamp,"
+    else:
         couterlabel = couterlabel + ","
     devId = str(lDev['id'])
     print("found device")
     lOutLine = f"{devId},{str(lDev['name'])},{str(lDev['sdsId'])},{str(lDev['deviceCurrentPathName'])}"
     fData.write(lOutLine + '\n')
     couterlabel = couterlabel + f"{devId} totalWriteBwcnumSeconds," \
-                                f"{devId} totalWriteBwctotalWeightInKb," \
-                                f"{devId} totalWriteBwcnumOccured," \
-                                f"{devId} avgWriteLatencyInMicrosec," \
-                                f"{devId} totalReadBwcnumSeconds," \
-                                f"{devId} totalReadBwctotalWeightInKb," \
-                                f"{devId} totalReadBwcnumOccured," \
-                                f"{devId} avgReadLatencyInMicrosec"
+        f"{devId} totalWriteBwctotalWeightInKb," \
+        f"{devId} totalWriteBwcnumOccured," \
+        f"{devId} avgWriteLatencyInMicrosec," \
+        f"{devId} totalReadBwcnumSeconds," \
+        f"{devId} totalReadBwctotalWeightInKb," \
+        f"{devId} totalReadBwcnumOccured," \
+        f"{devId} avgReadLatencyInMicrosec"
     print("cout" + couterlabel)
     stUri = lDev['links'][1]['href']
     # print(stUri)
@@ -75,6 +73,7 @@ for lDev in rDev.json():
     else:
         arUri.append(stUri)
     count = count + 1
+
 
 fData.write('\n')
 fData.write(couterlabel + '\n')
@@ -87,13 +86,13 @@ while 1 == 1:
         if rdevUri.status_code == 200:
             jdevUri = rdevUri.json()
             pOutLine = f"{str(jdevUri['totalWriteBwc']['numSeconds'])}," \
-                       f"{str(jdevUri['totalWriteBwc']['totalWeightInKb'])}," \
-                       f"{str(jdevUri['totalWriteBwc']['numOccured'])}," \
-                       f"{str(jdevUri['avgWriteLatencyInMicrosec'])}," \
-                       f"{str(jdevUri['totalReadBwc']['numSeconds'])}," \
-                       f"{str(jdevUri['totalReadBwc']['totalWeightInKb'])}," \
-                       f"{str(jdevUri['totalReadBwc']['numOccured'])}," \
-                       f"{str(jdevUri['avgReadLatencyInMicrosec'])}"
+                f"{str(jdevUri['totalWriteBwc']['totalWeightInKb'])}," \
+                f"{str(jdevUri['totalWriteBwc']['numOccured'])}," \
+                f"{str(jdevUri['avgWriteLatencyInMicrosec'])}," \
+                f"{str(jdevUri['totalReadBwc']['numSeconds'])}," \
+                f"{str(jdevUri['totalReadBwc']['totalWeightInKb'])}," \
+                f"{str(jdevUri['totalReadBwc']['numOccured'])}," \
+                f"{str(jdevUri['avgReadLatencyInMicrosec'])}"
             finalLine = finalLine + "," + pOutLine
         else:
             pOutLine = f"{time.strftime('%H-%M-%S')},"
@@ -105,13 +104,7 @@ while 1 == 1:
     fData.write(finalLine + '\n')
     fData.flush()
     os.fsync(fData.fileno())
+    print("just polled")
+#    time.sleep(5)
 
-    for VolumeUri in aVolUri:
-        rVolUri = Conn.get(f"{baseUri}{VolUri}")
-        jVolUri = rVolUri.json()
-        HTTPS: // < server >: < port > / api / instances / Volume::
-        print("just polled")
-
-    #    time.sleep(5)
-
-    fData.close()
+fData.close()
