@@ -57,13 +57,13 @@ for lDev in rDev.json():
     print("found device")
     lOutLine = f"{devId},{str(lDev['name'])},{str(lDev['sdsId'])},{str(lDev['deviceCurrentPathName'])}"
     fData.write(lOutLine + '\n')
-    couterlabel = couterlabel + f"{devId} totalWriteBwcnumSeconds," \
-        f"{devId} totalWriteBwctotalWeightInKb," \
-        f"{devId} totalWriteBwcnumOccured," \
+    couterlabel = couterlabel + f"{devId} PrimaryWriteBwcnumSeconds," \
+        f"{devId} PrimaryWriteBwcPrimaryWeightInKb," \
+        f"{devId} PrimaryWriteBwcnumOccured," \
         f"{devId} avgWriteLatencyInMicrosec," \
-        f"{devId} totalReadBwcnumSeconds," \
-        f"{devId} totalReadBwctotalWeightInKb," \
-        f"{devId} totalReadBwcnumOccured," \
+        f"{devId} PrimaryReadBwcnumSeconds," \
+        f"{devId} PrimaryReadBwcPrimaryWeightInKb," \
+        f"{devId} PrimaryReadBwcnumOccured," \
         f"{devId} avgReadLatencyInMicrosec"
     print("cout" + couterlabel)
     stUri = lDev['links'][1]['href']
@@ -85,13 +85,15 @@ while 1 == 1:
         rdevUri = Conn.get(f"{baseUri}{devUri}")
         if rdevUri.status_code == 200:
             jdevUri = rdevUri.json()
-            pOutLine = f"{str(jdevUri['totalWriteBwc']['numSeconds'])}," \
-                f"{str(jdevUri['totalWriteBwc']['totalWeightInKb'])}," \
-                f"{str(jdevUri['totalWriteBwc']['numOccured'])}," \
+            #print("json output")
+            #print(jdevUri)
+            pOutLine = f"{str(jdevUri['primaryWriteBwc']['numSeconds'])}," \
+                f"{str(jdevUri['primaryWriteBwc']['totalWeightInKb'])}," \
+                f"{str(jdevUri['primaryWriteBwc']['numOccured'])}," \
                 f"{str(jdevUri['avgWriteLatencyInMicrosec'])}," \
-                f"{str(jdevUri['totalReadBwc']['numSeconds'])}," \
-                f"{str(jdevUri['totalReadBwc']['totalWeightInKb'])}," \
-                f"{str(jdevUri['totalReadBwc']['numOccured'])}," \
+                f"{str(jdevUri['primaryReadBwc']['numSeconds'])}," \
+                f"{str(jdevUri['primaryReadBwc']['totalWeightInKb'])}," \
+                f"{str(jdevUri['primaryReadBwc']['numOccured'])}," \
                 f"{str(jdevUri['avgReadLatencyInMicrosec'])}"
             finalLine = finalLine + "," + pOutLine
         else:
