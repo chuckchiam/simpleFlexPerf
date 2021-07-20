@@ -85,8 +85,8 @@ while 1 == 1:
         rdevUri = Conn.get(f"{baseUri}{devUri}")
         if rdevUri.status_code == 200:
             jdevUri = rdevUri.json()
-            #print("json output")
-            #print(jdevUri)
+            print("json output")
+            print(jdevUri)
             pOutLine = f"{str(jdevUri['primaryWriteBwc']['numSeconds'])}," \
                 f"{str(jdevUri['primaryWriteBwc']['totalWeightInKb'])}," \
                 f"{str(jdevUri['primaryWriteBwc']['numOccured'])}," \
@@ -107,6 +107,7 @@ while 1 == 1:
     fData.flush()
     os.fsync(fData.fileno())
     print("just polled")
+    exit()
 #    time.sleep(5)
 
 fData.close()
